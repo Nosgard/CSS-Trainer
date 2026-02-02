@@ -64,6 +64,16 @@ header {
 
 /* Tab Container */
 
+/* Exercise Container */
+
+.exercise-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    column-gap: 10px;
+}
+
 .exercise {
     background: #DADADA;
     max-width: 300px;
@@ -80,6 +90,14 @@ header {
 
 .exercise p {
     font-size: 24px;
+}
+
+/* Elements Display */
+
+.elementsdisplay {
+    max-width: 300px;
+    height: auto;
+    border: 2px solid black;
 }
 
 /* Code Container */
