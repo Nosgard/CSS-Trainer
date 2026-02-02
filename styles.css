@@ -40,12 +40,16 @@ header {
 }
 
 #tabs label {
-    padding: 16px;
+    flex: 1;
+    padding: 12px;
     background: #4CADF3;
     color: #FFFFFF;
     font-weight: bold;
     font-size: 18px;
+    text-align: center;
     cursor: pointer;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 #tabs .tab {
