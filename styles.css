@@ -89,20 +89,23 @@ header {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-}
-
-.htmlcode {
-    background: #DADADA;
-    width: 100%;
-    max-width: 400px;
-}
-
-.htmlcode p {
-    padding: 10px;
-    color: #606060;
+    gap: 10px;
 }
 
 .code-header {
     border-bottom: 1px solid black;
-    padding: 5px;
+    padding: 10px;
+}
+
+.htmlcode, .csscode {
+    background: #DADADA;
+    width: 100%;
+    max-width: 400px;
+    border: 2px solid black;
+    border-radius: 16px;
+}
+
+.htmlcode p, .csscode p {
+    padding: 10px;
+    color: #606060;
 }
