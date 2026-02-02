@@ -36,7 +36,9 @@ header {
 }
 
 #tabs input[type="radio"]:checked + label + .tab {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 #tabs label {
@@ -78,4 +80,29 @@ header {
 
 .exercise p {
     font-size: 24px;
+}
+
+/* Code Container */
+
+.code-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.htmlcode {
+    background: #DADADA;
+    width: 100%;
+    max-width: 400px;
+}
+
+.htmlcode p {
+    padding: 10px;
+    color: #606060;
+}
+
+.code-header {
+    border-bottom: 1px solid black;
+    padding: 5px;
 }
