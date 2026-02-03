@@ -120,7 +120,6 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: flex-start;
     gap: 10px;
 }
 
@@ -155,7 +154,35 @@ header {
 
 /* CSS Editor */
 
-.csscode p {
-    padding: 10px;
+.css-editor {
+    display: block;
     color: #606060;
+    padding: 15px;
+    font-family: Consolas, monaco, monospace;
+    font-size: 18px;
+}
+
+.css-line {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+.css-line input {
+    border: none;
+    padding: 6px;
+    font-family: inherit;
+    font-size: inherit;
+    min-width: 120px;
+}
+
+.css-line code {
+    font-weight: bold;
+}
+
+.css-property,
+.css-value {
+    min-width: 100px;
 }
