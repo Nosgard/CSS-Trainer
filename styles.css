@@ -186,3 +186,29 @@ header {
 .css-value {
     min-width: 100px;
 }
+
+/* Button Area */
+
+.btn-wrapper {
+    order: 2;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 25px 10px 25px;
+    border: none;
+    background: #4CADF3;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:active {
+    background: #428CC2;
+}
