@@ -6,6 +6,16 @@ import { validateTask } from "./taskValidator.js";
 
 const btnCheck = document.querySelector(".btn.check");
 
+
+/** This is the Main Part of the Application, where all the Action takes place.
+ * First the File takes all important methods from the other JS-Files,
+ * then it stores all Tasks associated to the Application from
+ * from ./taskData/tasks.json
+ * 
+ * Important!
+ * The Check-Button that gets an Event-Listener is the key
+ * to the whole processing of the Task Validation. Handle with care!
+ */
 let taskData = [];
 
 (async () => {
