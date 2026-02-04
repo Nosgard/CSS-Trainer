@@ -1,0 +1,15 @@
+{
+    "tasks": [
+        {
+            "id": 1,
+            "exercise": "Element Tag",
+            "target": ".elementsdisplay p",
+            "expected": {
+                "selector": "body p",
+                "rules": {
+                    "background": "blue"
+                }
+            }
+        }
+    ]
+}
