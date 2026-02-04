@@ -22,7 +22,7 @@ header {
     flex-wrap: wrap;
     width: 100%;
     max-width: 1080px;
-    margin: 50px auto;
+    margin: 15px auto;
     padding: 25px;
     column-gap: 15px;
 }
