@@ -42,25 +42,26 @@
             <input type="radio" id="elementtasktab" name="tabs">
             <label for="elementtasktab">Element Tag</label>
             <section class="tab" data-task-id="1">
-                <div class="exercise-container">
-                    <div class="exercise">
-                        <h2>Exercise</h2>
-                        <p>Select all Elements inside the body-Tag and paint them blue</p>
-                    </div>
-
-                    <div class="elementsdisplay">
-                        <p>Element</p>
-                        <p>Element</p>
-                        <p>Element</p>
-                    </div>
-                </div>
-
-                <div class="code-container">
-                    <div class="htmlcode">
-                        <div class="code-header">
-                            <h2>HTML</h2>
+                <div id="task-1">
+                    <div class="exercise-container">
+                        <div class="exercise">
+                            <h2>Exercise</h2>
+                            <p>Select all Elements inside the body-Tag and paint them blue</p>
                         </div>
-                        <pre><code>&lt;html lang="en"&gt;
+
+                        <div class="elementsdisplay">
+                            <p>Element</p>
+                            <p>Element</p>
+                            <p>Element</p>
+                        </div>
+                    </div>
+
+                    <div class="code-container">
+                        <div class="htmlcode">
+                            <div class="code-header">
+                                <h2>HTML</h2>
+                            </div>
+                            <pre><code>&lt;html lang="en"&gt;
 &lt;body&gt;
 &lt;p&gt;Element&lt;/p&gt;
 &lt;p&gt;Element&lt;/p&gt;
@@ -69,56 +70,57 @@
 &lt;/html&gt;
 </code></pre>
 
-                    </div>
-
-                    <div class="csscode">
-                        <div class="code-header">
-                            <h2>CSS</h2>
-                        </div>
-                        <div class="css-editor">
-                            <div class="css-line">
-                                <input type="text" class="css-selector">
-                                <code>{</code>
-                            </div>
-
-                            <div class="css-line">
-                                <input type="text" class="css-property">
-                                <code>:</code>
-                                <input type="text" class="css-value">
-                                <code>;</code>
-                            </div>
-
-                            <div class="css-line">
-                                <code>}</code>
-                            </div>
                         </div>
 
+                        <div class="csscode">
+                            <div class="code-header">
+                                <h2>CSS</h2>
+                            </div>
+                            <div class="css-editor">
+                                <div class="css-line">
+                                    <input type="text" class="css-selector">
+                                    <code>{</code>
+                                </div>
+
+                                <div class="css-line">
+                                    <input type="text" class="css-property">
+                                    <code>:</code>
+                                    <input type="text" class="css-value">
+                                    <code>;</code>
+                                </div>
+
+                                <div class="css-line">
+                                    <code>}</code>
+                                </div>
+                            </div>
+                        </div>
             </section>
 
             <!-- IDs -->
             <input type="radio" id="idtasktab" name="tabs">
             <label for="idtasktab">ID</label>
             <section class="tab" data-task-id="2">
-                <div class="exercise-container">
-                    <div class="exercise">
-                        <h2>Exercise</h2>
-                        <p>Select the Element with the unique ID and increase the Padding</p><br>
-                        <p>Hint: Change the Padding to 30px</p>
-                    </div>
-
-                    <div class="elementsdisplay">
-                        <p>Element</p>
-                        <p id="elementid">Element</p>
-                        <p>Element</p>
-                    </div>
-                </div>
-
-                <div class="code-container">
-                    <div class="htmlcode">
-                        <div class="code-header">
-                            <h2>HTML</h2>
+                <div id="task-2">
+                    <div class="exercise-container">
+                        <div class="exercise">
+                            <h2>Exercise</h2>
+                            <p>Select the Element with the unique ID and increase the Padding</p><br>
+                            <p>Hint: Change the Padding to 30px</p>
                         </div>
-                        <pre><code>&lt;html lang="en"&gt;
+
+                        <div class="elementsdisplay">
+                            <p>Element</p>
+                            <p id="elementid">Element</p>
+                            <p>Element</p>
+                        </div>
+                    </div>
+
+                    <div class="code-container">
+                        <div class="htmlcode">
+                            <div class="code-header">
+                                <h2>HTML</h2>
+                            </div>
+                            <pre><code>&lt;html lang="en"&gt;
 &lt;body&gt;
 &lt;p&gt;Element&lt;/p&gt;
 &lt;p id="elementid"&gt;Element&lt;/p&gt;
@@ -127,27 +129,28 @@
 &lt;/html&gt;
 </code></pre>
 
-                    </div>
-
-                    <div class="csscode">
-                        <div class="code-header">
-                            <h2>CSS</h2>
                         </div>
-                        <div class="css-editor">
-                            <div class="css-line">
-                                <input type="text" class="css-selector">
-                                <code>{</code>
-                            </div>
 
-                            <div class="css-line">
-                                <input type="text" class="css-property">
-                                <code>:</code>
-                                <input type="text" class="css-value">
-                                <code>;</code>
+                        <div class="csscode">
+                            <div class="code-header">
+                                <h2>CSS</h2>
                             </div>
+                            <div class="css-editor">
+                                <div class="css-line">
+                                    <input type="text" class="css-selector">
+                                    <code>{</code>
+                                </div>
 
-                            <div class="css-line">
-                                <code>}</code>
+                                <div class="css-line">
+                                    <input type="text" class="css-property">
+                                    <code>:</code>
+                                    <input type="text" class="css-value">
+                                    <code>;</code>
+                                </div>
+
+                                <div class="css-line">
+                                    <code>}</code>
+                                </div>
                             </div>
                         </div>
             </section>
@@ -156,25 +159,26 @@
             <input type="radio" id="classestasktab" name="tabs">
             <label for="classestasktab">Classes</label>
             <section class="tab" data-task-id="3">
-                <div class="exercise-container">
-                    <div class="exercise">
-                        <h2>Exercise</h2>
-                        <p>Select the Elements with the given Class and make the text content bold</p>
-                    </div>
-
-                    <div class="elementsdisplay">
-                        <p>Element</p>
-                        <p class="elementcl">Element</p>
-                        <p class="elementcl">Element</p>
-                    </div>
-                </div>
-
-                <div class="code-container">
-                    <div class="htmlcode">
-                        <div class="code-header">
-                            <h2>HTML</h2>
+                <div id="task-3">
+                    <div class="exercise-container">
+                        <div class="exercise">
+                            <h2>Exercise</h2>
+                            <p>Select the Elements with the given Class and make the text content bold</p>
                         </div>
-                        <pre><code>&lt;html lang="en"&gt;
+
+                        <div class="elementsdisplay">
+                            <p>Element</p>
+                            <p class="elementcl">Element</p>
+                            <p class="elementcl">Element</p>
+                        </div>
+                    </div>
+
+                    <div class="code-container">
+                        <div class="htmlcode">
+                            <div class="code-header">
+                                <h2>HTML</h2>
+                            </div>
+                            <pre><code>&lt;html lang="en"&gt;
 &lt;body&gt;
 &lt;p&gt;Element&lt;/p&gt;
 &lt;p class="elementcl"&gt;Element&lt;/p&gt;
@@ -183,27 +187,28 @@
 &lt;/html&gt;
 </code></pre>
 
-                    </div>
-
-                    <div class="csscode">
-                        <div class="code-header">
-                            <h2>CSS</h2>
                         </div>
-                        <div class="css-editor">
-                            <div class="css-line">
-                                <input type="text" class="css-selector">
-                                <code>{</code>
-                            </div>
 
-                            <div class="css-line">
-                                <input type="text" class="css-property">
-                                <code>:</code>
-                                <input type="text" class="css-value">
-                                <code>;</code>
+                        <div class="csscode">
+                            <div class="code-header">
+                                <h2>CSS</h2>
                             </div>
+                            <div class="css-editor">
+                                <div class="css-line">
+                                    <input type="text" class="css-selector">
+                                    <code>{</code>
+                                </div>
 
-                            <div class="css-line">
-                                <code>}</code>
+                                <div class="css-line">
+                                    <input type="text" class="css-property">
+                                    <code>:</code>
+                                    <input type="text" class="css-value">
+                                    <code>;</code>
+                                </div>
+
+                                <div class="css-line">
+                                    <code>}</code>
+                                </div>
                             </div>
                         </div>
             </section>
@@ -212,27 +217,28 @@
             <input type="radio" id="childrenpartonetasktab" name="tabs">
             <label for="childrenpartonetasktab">Children 1</label>
             <section class="tab" data-task-id="4">
-                <div class="exercise-container">
-                    <div class="exercise">
-                        <h2>Exercise</h2>
-                        <p>Select the first Element inside the surrounding Element (Wrapper) and paint it yellow</p>
-                    </div>
+                <div id="task-4">
+                    <div class="exercise-container">
+                        <div class="exercise">
+                            <h2>Exercise</h2>
+                            <p>Select the first Element inside the surrounding Element (Wrapper) and paint it yellow</p>
+                        </div>
 
-                    <div class="elementsdisplay">
-                        <div class="wrapper">
-                        <p>Element</p>
-                        <p>Element</p>
-                        <p>Element</p>
+                        <div class="elementsdisplay">
+                            <div class="wrapper">
+                                <p>Element</p>
+                                <p>Element</p>
+                                <p>Element</p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="code-container">
-                    <div class="htmlcode">
-                        <div class="code-header">
-                            <h2>HTML</h2>
-                        </div>
-                        <pre><code>&lt;html lang="en"&gt;
+                    <div class="code-container">
+                        <div class="htmlcode">
+                            <div class="code-header">
+                                <h2>HTML</h2>
+                            </div>
+                            <pre><code>&lt;html lang="en"&gt;
 &lt;body&gt;
 &lt;div class="wrapper"&gt;
 &lt;p&gt;Element&lt;/p&gt;
@@ -243,27 +249,28 @@
 &lt;/html&gt;
 </code></pre>
 
-                    </div>
-
-                    <div class="csscode">
-                        <div class="code-header">
-                            <h2>CSS</h2>
                         </div>
-                        <div class="css-editor">
-                            <div class="css-line">
-                                <input type="text" class="css-selector">
-                                <code>{</code>
-                            </div>
 
-                            <div class="css-line">
-                                <input type="text" class="css-property">
-                                <code>:</code>
-                                <input type="text" class="css-value">
-                                <code>;</code>
+                        <div class="csscode">
+                            <div class="code-header">
+                                <h2>CSS</h2>
                             </div>
+                            <div class="css-editor">
+                                <div class="css-line">
+                                    <input type="text" class="css-selector">
+                                    <code>{</code>
+                                </div>
 
-                            <div class="css-line">
-                                <code>}</code>
+                                <div class="css-line">
+                                    <input type="text" class="css-property">
+                                    <code>:</code>
+                                    <input type="text" class="css-value">
+                                    <code>;</code>
+                                </div>
+
+                                <div class="css-line">
+                                    <code>}</code>
+                                </div>
                             </div>
                         </div>
             </section>
@@ -272,27 +279,29 @@
             <input type="radio" id="childrenparttwotasktab" name="tabs">
             <label for="childrenparttwotasktab">Children 2</label>
             <section class="tab" data-task-id="5">
-                <div class="exercise-container">
-                    <div class="exercise">
-                        <h2>Exercise</h2>
-                        <p>Select the last Element inside the surrounding Element (Wrapper) and make the text content italic</p>
-                    </div>
+                <div id="task-5">
+                    <div class="exercise-container">
+                        <div class="exercise">
+                            <h2>Exercise</h2>
+                            <p>Select the last Element inside the surrounding Element (Wrapper) and make the text
+                                content italic</p>
+                        </div>
 
-                    <div class="elementsdisplay">
-                        <div class="wrapper">
-                        <p>Element</p>
-                        <p>Element</p>
-                        <p>Element</p>
+                        <div class="elementsdisplay">
+                            <div class="wrapper">
+                                <p>Element</p>
+                                <p>Element</p>
+                                <p>Element</p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="code-container">
-                    <div class="htmlcode">
-                        <div class="code-header">
-                            <h2>HTML</h2>
-                        </div>
-                        <pre><code>&lt;html lang="en"&gt;
+                    <div class="code-container">
+                        <div class="htmlcode">
+                            <div class="code-header">
+                                <h2>HTML</h2>
+                            </div>
+                            <pre><code>&lt;html lang="en"&gt;
 &lt;body&gt;
 &lt;div class="wrapper"&gt;
 &lt;p&gt;Element&lt;/p&gt;
@@ -303,27 +312,28 @@
 &lt;/html&gt;
 </code></pre>
 
-                    </div>
-
-                    <div class="csscode">
-                        <div class="code-header">
-                            <h2>CSS</h2>
                         </div>
-                        <div class="css-editor">
-                            <div class="css-line">
-                                <input type="text" class="css-selector">
-                                <code>{</code>
-                            </div>
 
-                            <div class="css-line">
-                                <input type="text" class="css-property">
-                                <code>:</code>
-                                <input type="text" class="css-value">
-                                <code>;</code>
+                        <div class="csscode">
+                            <div class="code-header">
+                                <h2>CSS</h2>
                             </div>
+                            <div class="css-editor">
+                                <div class="css-line">
+                                    <input type="text" class="css-selector">
+                                    <code>{</code>
+                                </div>
 
-                            <div class="css-line">
-                                <code>}</code>
+                                <div class="css-line">
+                                    <input type="text" class="css-property">
+                                    <code>:</code>
+                                    <input type="text" class="css-value">
+                                    <code>;</code>
+                                </div>
+
+                                <div class="css-line">
+                                    <code>}</code>
+                                </div>
                             </div>
                         </div>
             </section>
@@ -332,28 +342,30 @@
             <input type="radio" id="childrenpartthreetasktab" name="tabs">
             <label for="childrenpartthreetasktab">Children 3</label>
             <section class="tab" data-task-id="6">
-                <div class="exercise-container">
-                    <div class="exercise">
-                        <h2>Exercise</h2>
-                        <p>Select the second Element inside the surrounding Element (Wrapper) and give it a purple border</p><br>
-                        <p>Hint: Make the border 2px big</p>
-                    </div>
+                <div id="task-6">
+                    <div class="exercise-container">
+                        <div class="exercise">
+                            <h2>Exercise</h2>
+                            <p>Select the second Element inside the surrounding Element (Wrapper) and give it a purple
+                                border</p><br>
+                            <p>Hint: Make the border 2px big</p>
+                        </div>
 
-                    <div class="elementsdisplay">
-                        <div class="wrapper">
-                        <p>Element</p>
-                        <p>Element</p>
-                        <p>Element</p>
+                        <div class="elementsdisplay">
+                            <div class="wrapper">
+                                <p>Element</p>
+                                <p>Element</p>
+                                <p>Element</p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="code-container">
-                    <div class="htmlcode">
-                        <div class="code-header">
-                            <h2>HTML</h2>
-                        </div>
-                        <pre><code>&lt;html lang="en"&gt;
+                    <div class="code-container">
+                        <div class="htmlcode">
+                            <div class="code-header">
+                                <h2>HTML</h2>
+                            </div>
+                            <pre><code>&lt;html lang="en"&gt;
 &lt;body&gt;
 &lt;div class="wrapper"&gt;
 &lt;p&gt;Element&lt;/p&gt;
@@ -364,27 +376,28 @@
 &lt;/html&gt;
 </code></pre>
 
-                    </div>
-
-                    <div class="csscode">
-                        <div class="code-header">
-                            <h2>CSS</h2>
                         </div>
-                        <div class="css-editor">
-                            <div class="css-line">
-                                <input type="text" class="css-selector">
-                                <code>{</code>
-                            </div>
 
-                            <div class="css-line">
-                                <input type="text" class="css-property">
-                                <code>:</code>
-                                <input type="text" class="css-value">
-                                <code>;</code>
+                        <div class="csscode">
+                            <div class="code-header">
+                                <h2>CSS</h2>
                             </div>
+                            <div class="css-editor">
+                                <div class="css-line">
+                                    <input type="text" class="css-selector">
+                                    <code>{</code>
+                                </div>
 
-                            <div class="css-line">
-                                <code>}</code>
+                                <div class="css-line">
+                                    <input type="text" class="css-property">
+                                    <code>:</code>
+                                    <input type="text" class="css-value">
+                                    <code>;</code>
+                                </div>
+
+                                <div class="css-line">
+                                    <code>}</code>
+                                </div>
                             </div>
                         </div>
             </section>

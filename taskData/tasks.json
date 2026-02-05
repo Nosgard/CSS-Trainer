@@ -3,7 +3,7 @@
         {
             "id": 1,
             "exercise": "Element Tag",
-            "target": ".elementsdisplay p",
+            "target": "#task-1 .elementsdisplay p",
             "expected": {
                 "selector": "body p",
                 "rules": {
@@ -15,7 +15,7 @@
         {
             "id": 2,
             "exercise": "ID",
-            "target": "#elementid",
+            "target": "#task-2 #elementid",
             "expected": {
                 "selector": "#elementid",
                 "rules": {
@@ -27,7 +27,7 @@
         {
             "id": 3,
             "exercise": "Classes",
-            "target": ".elementcl",
+            "target": "#task-3 .elementcl",
             "expected": {
                 "selector": ".elementcl",
                 "rules": {
@@ -39,7 +39,7 @@
         {
             "id": 4,
             "exercise": "Children1",
-            "target": ".wrapper p:first-child",
+            "target": "#task-4 .wrapper p:first-child",
             "expected": {
                 "selector": ".wrapper p:first-child",
                 "rules": {
@@ -51,7 +51,7 @@
         {
             "id": 5,
             "exercise": "Children2",
-            "target": ".wrapper p:last-child",
+            "target": "#task-5 .wrapper p:last-child",
             "expected": {
                 "selector": ".wrapper p:last-child",
                 "rules": {
@@ -63,7 +63,7 @@
         {
             "id": 6,
             "exercise": "Children3",
-            "target": ".wrapper p:nth-child(2)",
+            "target": "#task-6 .wrapper p:nth-child(2)",
             "expected": {
                 "selector": ".wrapper p:nth-child(2)",
                 "rules": {
