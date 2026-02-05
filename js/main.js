@@ -3,6 +3,7 @@ import { buildCSS } from "./cssBuilder.js";
 import { applyCSS } from "./cssApplier.js";
 import { loadTasks } from "./taskLoader.js";
 import { validateTask } from "./taskValidator.js";
+import { getActiveTab } from "./tabHandler.js";
 
 const btnCheck = document.querySelector(".btn.check");
 
@@ -26,9 +27,7 @@ let taskData = [];
     taskData = tasks;
 })();
 
-function getActiveTab() {
-    return document.querySelector('#tabs input[name="tabs"]:checked + label + .tab');
-}
+
 
 btnCheck.addEventListener("click", () => {
 
