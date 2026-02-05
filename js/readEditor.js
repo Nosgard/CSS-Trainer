@@ -5,9 +5,19 @@
  */
 
 export function readEditor(activeTab) {
+    let selector = activeTab.querySelector(".css-selector")?.value || "";
+    let property = activeTab.querySelector(".css-property")?.value || "";
+    let value = activeTab.querySelector(".css-value")?.value || "";
+
+    if (!selector || !property || !value)
+    {
+        alert("Please fill out all inputs to continue");
+        return null;
+    }
+
     return {
-        selector: activeTab.querySelector(".css-selector")?.value || "",
-        property: activeTab.querySelector(".css-property")?.value || "",
-        value: activeTab.querySelector(".css-value")?.value || ""
+        selector,
+        property,
+        value
     };
 }

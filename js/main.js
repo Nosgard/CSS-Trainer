@@ -36,13 +36,16 @@ btnCheck.addEventListener("click", () => {
     const activeTab = getActiveTab();
     const input = readEditor(activeTab);
 
-    let isAnswerCorrect = validateTask(taskData[0], input);
+    if (input) {
 
-    if (isAnswerCorrect) {
-        console.log("Correct");
-        let cssRule = buildCSS(taskData[0].target, input.property, input.value);
-        console.log(cssRule);
+        let isAnswerCorrect = validateTask(taskData[0], input);
 
-        applyCSS(cssRule);
+        if (isAnswerCorrect) {
+            console.log("Correct");
+            let cssRule = buildCSS(taskData[0].target, input.property, input.value);
+            console.log(cssRule);
+
+            applyCSS(cssRule);
+        }
     }
 })
