@@ -3,7 +3,7 @@ import { buildCSS } from "./cssBuilder.js";
 import { applyCSS } from "./cssApplier.js";
 import { loadTasks } from "./taskLoader.js";
 import { validateTask } from "./taskValidator.js";
-import { getActiveTab } from "./tabHandler.js";
+import { getActiveTab, getActiveTask } from "./tabHandler.js";
 
 const btnCheck = document.querySelector(".btn.check");
 
@@ -33,15 +33,16 @@ btnCheck.addEventListener("click", () => {
 
     // Only take the Task of the selected Task into consideration!
     const activeTab = getActiveTab();
+    const activeTask = getActiveTask(activeTab, taskData);
     const input = readEditor(activeTab);
 
     if (input) {
 
-        let isAnswerCorrect = validateTask(taskData[0], input);
+        let isAnswerCorrect = validateTask(activeTask, input);
 
         if (isAnswerCorrect) {
             console.log("Correct");
-            let cssRule = buildCSS(taskData[0].target, input.property, input.value);
+            let cssRule = buildCSS(activeTask.target, input.property, input.value);
             console.log(cssRule);
 
             applyCSS(cssRule);
