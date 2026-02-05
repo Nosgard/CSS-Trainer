@@ -9,8 +9,11 @@ const btnCheck = document.querySelector(".btn.check");
 
 /** This is the Main Part of the Application, where all the Action takes place.
  * First the File takes all important methods from the other JS-Files,
- * then it stores all Tasks associated to the Application from
- * from ./taskData/tasks.json
+ * then it stores all Tasks associated to the Application
+ * from ./taskData/tasks.json.
+ * To make sure that only the selected Task will be processed,
+ * all user inputs will only be read from the Tab selected by the user.
+ * For further information, read the documentation of readEditor.js.
  * 
  * Important!
  * The Check-Button that gets an Event-Listener is the key
@@ -23,9 +26,15 @@ let taskData = [];
     taskData = tasks;
 })();
 
+function getActiveTab() {
+    return document.querySelector('#tabs input[name="tabs"]:checked + label + .tab');
+}
+
 btnCheck.addEventListener("click", () => {
 
-    const input = readEditor();
+    // Only take the Task of the selected Task into consideration!
+    const activeTab = getActiveTab();
+    const input = readEditor(activeTab);
 
     let isAnswerCorrect = validateTask(taskData[0], input);
 
