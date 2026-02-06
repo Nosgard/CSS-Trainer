@@ -213,6 +213,24 @@ header {
     min-width: 100px;
 }
 
+/* CSS Editor (JavaScript based) */
+
+.csscode.solved {
+    background: #89c91c;
+}
+
+.csscode.solved input {
+    background: #E8F1D8;
+}
+
+.csscode.wrong {
+    background: #ff5656;
+}
+
+.csscode.wrong input {
+    background: #FFDDDD;
+}
+
 /* Button Area */
 
 .btn-wrapper {

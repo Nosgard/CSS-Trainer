@@ -34,3 +34,34 @@ export function updateCheckButton() {
     ? "inline-block"
     : "none";
 }
+
+export function lockInputs() {
+    const activeTab = getActiveTab();
+    const activeInputs = activeTab.querySelectorAll("input");
+
+    activeInputs.forEach(input => {
+        input.disabled = true;
+    });
+}
+
+export function styleEditor(isAnswerCorrect) {
+    const activeTab = getActiveTab();
+    const editor = activeTab.querySelector('.csscode');
+
+    if(isAnswerCorrect) {
+        if (editor.classList.contains("wrong"))
+        {
+            editor.classList.remove("wrong");
+        }
+
+        editor.classList.add("solved");
+    }
+    else
+    {
+        if(!editor.classList.contains("wrong"))
+        {
+            editor.classList.add("wrong");
+        }
+    }
+    
+}
