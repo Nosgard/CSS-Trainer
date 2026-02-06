@@ -2,6 +2,7 @@ export function getActiveTab() {
     return document.querySelector('#tabs input[name="tabs"]:checked + label + .tab');
 }
 
+// The active Task will be derived from the ID of the active Tab
 export function getActiveTask(activeTab, taskData) {
 
     if (!activeTab)
@@ -28,6 +29,7 @@ function checkButtonActive() {
     return activeTab?.dataset.taskId;
 }
 
+// Depending on the active Tab either show or hide the Check-Button
 export function updateCheckButton() {
     const btnCheck = document.querySelector(".btn.check");
     btnCheck.style.display = checkButtonActive()
@@ -35,8 +37,9 @@ export function updateCheckButton() {
     : "none";
 }
 
-export function lockInputs() {
-    const activeTab = getActiveTab();
+// Disables all Input-Fields in an active Tab.
+// I.e. the user has entered the correct answer
+export function lockInputs(activeTab) {
     const activeInputs = activeTab.querySelectorAll("input");
 
     activeInputs.forEach(input => {
@@ -44,8 +47,8 @@ export function lockInputs() {
     });
 }
 
-export function styleEditor(isAnswerCorrect) {
-    const activeTab = getActiveTab();
+//Gives the Editor a Style depending on the given answer
+export function styleEditor(activeTab, isAnswerCorrect) {
     const editor = activeTab.querySelector('.csscode');
 
     if(isAnswerCorrect) {

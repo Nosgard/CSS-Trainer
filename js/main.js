@@ -71,10 +71,10 @@ btnCheck.addEventListener("click", () => {
             taskStyles.set(activeTask.id, cssRule);
             renderAllStyles(taskStyles);
 
-            lockInputs();
+            lockInputs(activeTab);
             
         }
 
-        styleEditor(isAnswerCorrect);
+        styleEditor(activeTab, isAnswerCorrect);
     }
 })
