@@ -20,3 +20,17 @@ export function getActiveTask(activeTab, taskData) {
 
     return task;
 }
+
+/**True: Tab is no Task
+ * False: Tab is a Task */
+function checkButtonActive() {
+    const activeTab = getActiveTab();
+    return activeTab?.dataset.taskId;
+}
+
+export function updateCheckButton() {
+    const btnCheck = document.querySelector(".btn.check");
+    btnCheck.style.display = checkButtonActive()
+    ? "inline-block"
+    : "none";
+}

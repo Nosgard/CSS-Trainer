@@ -3,9 +3,10 @@ import { buildCSS } from "./cssBuilder.js";
 import { renderAllStyles } from "./styleManager.js";
 import { loadTasks } from "./taskLoader.js";
 import { validateTask } from "./taskValidator.js";
-import { getActiveTab, getActiveTask } from "./tabHandler.js";
+import { getActiveTab, getActiveTask, updateCheckButton } from "./tabHandler.js";
 
 const btnCheck = document.querySelector(".btn.check");
+const tabs = document.querySelectorAll('#tabs input[name="tabs"]');
 
 
 /** This is the Main Part of the Application, where all the Action takes place.
@@ -28,6 +29,11 @@ const taskStyles = new Map();
     taskData = tasks;
 })();
 
+window.addEventListener("DOMContentLoaded", updateCheckButton);
+
+tabs.forEach(tab => {
+    tab.addEventListener("change", updateCheckButton);
+})
 
 
 btnCheck.addEventListener("click", () => {
