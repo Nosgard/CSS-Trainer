@@ -1,6 +1,6 @@
 import { readEditor } from "./readEditor.js";
 import { buildCSS } from "./cssBuilder.js";
-import { applyCSS } from "./cssApplier.js";
+import { renderAllStyles } from "./styleManager.js";
 import { loadTasks } from "./taskLoader.js";
 import { validateTask } from "./taskValidator.js";
 import { getActiveTab, getActiveTask } from "./tabHandler.js";
@@ -21,6 +21,7 @@ const btnCheck = document.querySelector(".btn.check");
  * to the whole processing of the Task Validation. Handle with care!
  */
 let taskData = [];
+const taskStyles = new Map();
 
 (async () => {
     const tasks = await loadTasks();
@@ -42,10 +43,11 @@ btnCheck.addEventListener("click", () => {
 
         if (isAnswerCorrect) {
             console.log("Correct");
-            let cssRule = buildCSS(activeTask.target, input.property, input.value);
-            console.log(cssRule);
+                
+            const cssRule = buildCSS(activeTask.target, input.property, input.value);
 
-            applyCSS(cssRule);
+            taskStyles.set(activeTask.id, cssRule);
+            renderAllStyles(taskStyles);
         }
     }
 })
