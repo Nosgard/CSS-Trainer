@@ -3,6 +3,7 @@
         {
             "id": 1,
             "exercise": "Element Tag",
+            "solved": false,
             "target": "#task-1 .elementsdisplay p",
             "expected": {
                 "selector": "body p",
@@ -15,6 +16,7 @@
         {
             "id": 2,
             "exercise": "ID",
+            "solved": false,
             "target": "#task-2 #elementid",
             "expected": {
                 "selector": "#elementid",
@@ -27,6 +29,7 @@
         {
             "id": 3,
             "exercise": "Classes",
+            "solved": false,
             "target": "#task-3 .elementcl",
             "expected": {
                 "selector": ".elementcl",
@@ -39,6 +42,7 @@
         {
             "id": 4,
             "exercise": "Children1",
+            "solved": false,
             "target": "#task-4 .wrapper p:first-child",
             "expected": {
                 "selector": ".wrapper p:first-child",
@@ -51,6 +55,7 @@
         {
             "id": 5,
             "exercise": "Children2",
+            "solved": false,
             "target": "#task-5 .wrapper p:last-child",
             "expected": {
                 "selector": ".wrapper p:last-child",
@@ -63,6 +68,7 @@
         {
             "id": 6,
             "exercise": "Children3",
+            "solved": false,
             "target": "#task-6 .wrapper p:nth-child(2)",
             "expected": {
                 "selector": ".wrapper p:nth-child(2)",
