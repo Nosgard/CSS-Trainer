@@ -53,7 +53,7 @@ tabs.forEach(tab => {
     tab.addEventListener("change", () => {
         updateCheckButton(btnCheck);
     });
-})
+});
 
 
 btnCheck.addEventListener("click", () => {
