@@ -45,10 +45,14 @@ const taskStyles = new Map();
     taskData = tasks;
 })();
 
-window.addEventListener("DOMContentLoaded", updateCheckButton);
+window.addEventListener("DOMContentLoaded", () => {
+    updateCheckButton(btnCheck);
+});
 
 tabs.forEach(tab => {
-    tab.addEventListener("change", updateCheckButton);
+    tab.addEventListener("change", () => {
+        updateCheckButton(btnCheck);
+    });
 })
 
 
@@ -70,6 +74,8 @@ btnCheck.addEventListener("click", () => {
 
             taskStyles.set(activeTask.id, cssRule);
             renderAllStyles(taskStyles);
+
+            activeTask.solved = true;
 
             lockInputs(activeTab);
             

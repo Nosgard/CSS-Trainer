@@ -24,15 +24,14 @@ export function getActiveTask(activeTab, taskData) {
 
 /**True: Tab is no Task
  * False: Tab is a Task */
-function checkButtonActive() {
+function isCheckButtonActive() {
     const activeTab = getActiveTab();
     return activeTab?.dataset.taskId;
 }
 
 // Depending on the active Tab either show or hide the Check-Button
-export function updateCheckButton() {
-    const btnCheck = document.querySelector(".btn.check");
-    btnCheck.style.display = checkButtonActive()
+export function updateCheckButton(btnCheck) {
+    btnCheck.style.display = isCheckButtonActive()
     ? "inline-block"
     : "none";
 }
