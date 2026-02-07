@@ -40,7 +40,10 @@ export function updateCheckButton(btnCheck) {
  * active Task remains unsolved. Once it's the case, disable
  * the Check-Button */
 export function updateCheckButtonState(btnCheck, activeTask) {
-    btnCheck.disabled = activeTask.solved;
+    if (activeTask)
+    {
+        btnCheck.disabled = activeTask.solved;
+    }
 }
 
 // Disables all Input-Fields in an active Tab.
