@@ -3,7 +3,7 @@ import { buildCSS } from "./cssBuilder.js";
 import { renderAllStyles } from "./styleManager.js";
 import { loadTasks } from "./taskLoader.js";
 import { validateTask } from "./taskValidator.js";
-import { getActiveTab, getActiveTask, updateCheckButton, lockInputs, styleEditor } from "./tabHandler.js";
+import { getActiveTab, getActiveTask, updateCheckButton, updateCheckButtonState, lockInputs, styleEditor } from "./tabHandler.js";
 
 const btnCheck = document.querySelector(".btn.check");
 const tabs = document.querySelectorAll('#tabs input[name="tabs"]');
@@ -51,7 +51,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
 tabs.forEach(tab => {
     tab.addEventListener("change", () => {
+        const activeTab = getActiveTab();
+        const activeTask = getActiveTask(activeTab, taskData);
+
         updateCheckButton(btnCheck);
+        updateCheckButtonState(btnCheck, activeTask);
     });
 });
 
@@ -76,6 +80,8 @@ btnCheck.addEventListener("click", () => {
             renderAllStyles(taskStyles);
 
             activeTask.solved = true;
+
+            updateCheckButtonState(btnCheck, activeTask);
 
             lockInputs(activeTab);
             

@@ -256,3 +256,8 @@ header {
 .btn:active {
     background: #428CC2;
 }
+
+.btn:disabled {
+    background: #DADADA;
+    cursor: auto;
+}

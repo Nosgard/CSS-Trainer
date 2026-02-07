@@ -36,6 +36,13 @@ export function updateCheckButton(btnCheck) {
     : "none";
 }
 
+/**The Check-Button is only allowed to be used as long as the 
+ * active Task remains unsolved. Once it's the case, disable
+ * the Check-Button */
+export function updateCheckButtonState(btnCheck, activeTask) {
+    btnCheck.disabled = activeTask.solved;
+}
+
 // Disables all Input-Fields in an active Tab.
 // I.e. the user has entered the correct answer
 export function lockInputs(activeTab) {
