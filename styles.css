@@ -265,7 +265,7 @@ header {
 
 /* -- Responsive Area -- */
 
-/* -- Small Laptops (1280px / 80em) */
+/* -- Small Laptops (1280px / 80em) -- */
 
 @media screen and (max-width: 80em) {
     header {
