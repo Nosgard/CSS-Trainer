@@ -261,3 +261,60 @@ header {
     background: #DADADA;
     cursor: auto;
 }
+
+
+/* -- Responsive Area -- */
+
+/* -- Small Laptops (1280px / 80em) */
+
+@media screen and (max-width: 80em) {
+    header {
+        font-size: 32px;
+    }
+
+    /* Tab Control */
+
+    #tabs {
+        max-width: 920px;
+    }
+
+    #tabs label {
+        font-size: 16px;
+    }
+
+    /* Tab Container */
+
+    /* Exercise Container */
+
+    .exercise h2 {
+        font-size: 32px;
+    }
+
+    .exercise p {
+        font-size: 22px;
+    }
+
+    /* Elements Display */
+
+    .elementsdisplay p {
+        font-size: 16px;
+    }
+
+    /* HTML Editor */
+
+    .htmlcode pre {
+        font-size: 16px;
+    }
+
+    /* CSS Editor */
+
+    .css-editor {
+        font-size: 16px;
+    }
+
+    /* Button Area */
+
+    .btn {
+        font-size: 18px;
+    }
+}
