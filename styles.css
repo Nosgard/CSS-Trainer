@@ -196,7 +196,7 @@ header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 15px;
+    gap: clamp(4px, 1.5vw, 15px);
     margin-bottom: 12px;
 }
 
@@ -205,11 +205,23 @@ header {
     padding: 6px;
     font-family: inherit;
     font-size: inherit;
-    min-width: 120px;
 }
 
 .css-line code {
     font-weight: bold;
+    flex: 0 0 auto;
+}
+
+.css-selector {
+    flex: 0.7 1;
+}
+
+.css-property {
+    flex: 1 1 100px;
+}
+
+.css-value {
+    flex: 1 1 100px;
 }
 
 .css-property,
@@ -369,3 +381,6 @@ header {
         max-width: 100%;
     }
 }
+
+/* -- Big Smartphones (from 480px/30em to 768px/48em) -- */
+
