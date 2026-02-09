@@ -60,20 +60,36 @@ export function lockInputs(activeTab) {
 export function styleEditor(activeTab, isAnswerCorrect) {
     const editor = activeTab.querySelector('.csscode');
 
-    if(isAnswerCorrect) {
-        if (editor.classList.contains("wrong"))
+    setStyleByAnswer(editor, isAnswerCorrect);
+}
+
+// Gives the Tab a Style depending on the given answer
+export function styleTab(tabLabel, isAnswerCorrect) {
+    setStyleByAnswer(tabLabel, isAnswerCorrect);
+}
+
+/** Takes an Element and checks if the Answer was correct.
+ * The Answer can be right or wrong.
+ * Either way, the Element gets a fitting Class to set the
+ * Style. The Styles are defined in styles.css. For further
+ * Information, go to styles.css and look for the Sections
+ * that are marked with "JavaScript based" */
+
+function setStyleByAnswer(styleObject, isAnswerCorrect) {
+    if (isAnswerCorrect) {
+
+        if(styleObject.classList.contains("wrong"))
         {
-            editor.classList.remove("wrong");
+            styleObject.classList.remove("wrong");
         }
 
-        editor.classList.add("solved");
+       styleObject.classList.add("solved");
     }
     else
     {
-        if(!editor.classList.contains("wrong"))
+        if(!styleObject.classList.contains("wrong"))
         {
-            editor.classList.add("wrong");
+            styleObject.classList.add("wrong");
         }
     }
-    
 }

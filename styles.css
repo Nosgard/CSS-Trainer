@@ -72,6 +72,24 @@ header {
     gap: 20px;
 }
 
+/* Tab Control (JavaScript based) */
+
+#tabs input[type="radio"] + label.solved {
+    background: #89C91C;
+}
+
+#tabs input[type="radio"]:checked + label.solved {
+    background: #77b50e;
+}
+
+#tabs input[type="radio"] + label.wrong {
+    background: #FF5656;
+}
+
+#tabs input[type="radio"]:checked + label.wrong {
+    background: #c14343;
+}
+
 /* Tab Container */
 
 /* Exercise Container */

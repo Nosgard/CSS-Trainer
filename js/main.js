@@ -3,7 +3,7 @@ import { buildCSS } from "./cssBuilder.js";
 import { renderAllStyles } from "./styleManager.js";
 import { loadTasks } from "./taskLoader.js";
 import { validateTask } from "./taskValidator.js";
-import { getActiveTab, getActiveTask, updateCheckButton, updateCheckButtonState, lockInputs, styleEditor } from "./tabHandler.js";
+import { getActiveTab, getActiveTask, updateCheckButton, updateCheckButtonState, lockInputs, styleEditor, styleTab } from "./tabHandler.js";
 
 const btnCheck = document.querySelector(".btn.check");
 const tabs = document.querySelectorAll('#tabs input[name="tabs"]');
@@ -62,6 +62,9 @@ tabs.forEach(tab => {
 
 btnCheck.addEventListener("click", () => {
 
+    // Take the Label of the selected Tab for Styling-Purposes later on
+    const tabLabel = document.querySelector('#tabs input[type="radio"]:checked + label');
+
     // Only take the Task of the selected Tab into consideration!
     const activeTab = getActiveTab();
     const activeTask = getActiveTask(activeTab, taskData);
@@ -88,5 +91,6 @@ btnCheck.addEventListener("click", () => {
         }
 
         styleEditor(activeTab, isAnswerCorrect);
+        styleTab(tabLabel, isAnswerCorrect);
     }
 })
