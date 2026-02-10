@@ -38,15 +38,21 @@ const tabs = document.querySelectorAll('#tabs input[name="tabs"]');
 let taskData = [];
 const taskStyles = new Map();
 
+// Allocate all Tasks (For more Info: taskData/tasks.json)
 (async () => {
     const tasks = await loadTasks();
     taskData = tasks;
 })();
 
+// Don't let the Check-Button appear on Tabs not related to Tasks
 window.addEventListener("DOMContentLoaded", () => {
     updateCheckButton(btnCheck);
 });
 
+/** For every Tab, you make sure that the Check-Button is not
+ * available to be used when either the Introduction-Tab
+ * or a Tab with a solved Task is selected
+*/
 tabs.forEach(tab => {
     tab.addEventListener("change", () => {
         const activeTab = getActiveTab();
