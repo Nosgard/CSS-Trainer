@@ -19,6 +19,16 @@ h2 {
     margin-bottom: 16px;
 }
 
+h3 {
+    font-size: 24px;
+}
+
+/* Line Break */
+
+.nextline {
+    height: 15px;
+}
+
 /* -- Main Part -- */
 
 /* Tab Control */
@@ -100,14 +110,20 @@ h2 {
 
 /* Introduction Container */
 
-#greeting {
+#introduction-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+#greeting, #howto {
     background: #4CADF3;
     color: #FFFFFF;
     padding: 16px;
     border-radius: 16px;
 }
 
-#greeting p {
+#greeting p, #howto p {
     font-size: 24px;
 }
 
@@ -323,6 +339,10 @@ h2 {
         font-size: 32px;
     }
 
+    h3 {
+        font-size: 22px;
+    }
+
     /* Tab Control */
 
     #tabs {
@@ -337,8 +357,8 @@ h2 {
 
     /* Greeting Container */
 
-    #greeting p {
-        font-size:22px
+    #greeting p, #howto p {
+        font-size: 22px
     }
 
     /* Exercise Container */
@@ -422,6 +442,12 @@ h2 {
 /* -- Big Smartphones (from 480px/30em to 768px/48em) -- */
 
 @media screen and (max-width: 48em) {
+
+    /* Introduction Container */
+
+    #introduction-container {
+        grid-template-columns: 1fr;
+    }
 
     /* Tab Control */
 
