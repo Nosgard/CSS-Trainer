@@ -5,10 +5,6 @@ import { loadTasks } from "./taskLoader.js";
 import { validateTask } from "./taskValidator.js";
 import { getActiveTab, getActiveTask, updateCheckButton, updateCheckButtonState, lockInputs, styleEditor, styleTab } from "./tabHandler.js";
 
-const btnCheck = document.querySelector(".btn.check");
-const tabs = document.querySelectorAll('#tabs input[name="tabs"]');
-
-
 /** This is the Main Part of the Application, where all the Action takes place.
  * First the File takes all important methods from the other JS-Files,
  * then it stores all Tasks associated to the Application
@@ -37,6 +33,8 @@ const tabs = document.querySelectorAll('#tabs input[name="tabs"]');
  * The Check-Button is the key to the whole processing
  * of the Task Validation. Handle with care!
  */
+const btnCheck = document.querySelector(".btn.check");
+const tabs = document.querySelectorAll('#tabs input[name="tabs"]');
 let taskData = [];
 const taskStyles = new Map();
 
