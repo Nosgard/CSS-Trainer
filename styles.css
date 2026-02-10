@@ -6,7 +6,7 @@
 
 header {
     color: #FFFFFF;
-    background: linear-gradient(90deg,rgba(23, 114, 179, 1) 0%, rgba(68, 149, 207, 1) 54%, rgba(121, 195, 248, 1) 100%);
+    background: linear-gradient(90deg, rgba(23, 114, 179, 1) 0%, rgba(68, 149, 207, 1) 54%, rgba(121, 195, 248, 1) 100%);
     width: 100%;
     padding: 16px;
     font-size: 36px;
@@ -33,6 +33,8 @@ h3 {
 
 /* Tab Control */
 
+/* Fundamentals */
+
 #tabs {
     display: flex;
     flex-wrap: wrap;
@@ -43,24 +45,10 @@ h3 {
     column-gap: 15px;
 }
 
-#tabs input[type="radio"] {
-    display: none;
-}
-
-#tabs input[type="radio"]:checked + label {
-    background: #428CC2;
-}
-
-#tabs input[type="radio"]:checked + label + .tab {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
 #tabs label {
     flex: 1;
     padding: 12px;
-    background: #4CADF3;
+    background: #DADADA;
     color: #FFFFFF;
     font-weight: bold;
     font-size: 20px;
@@ -71,8 +59,8 @@ h3 {
 }
 
 #tabs label span:last-child {
-        display: none;
-    }
+    display: none;
+}
 
 #tabs .tab {
     width: 100%;
@@ -81,6 +69,32 @@ h3 {
     order: 1;
     display: none;
 }
+
+#tabs input[type="radio"] {
+    display: none;
+}
+
+#tabs input[type="radio"]:checked + label {
+    background: #c4c4c4;
+}
+
+#tabs input[type="radio"]:checked + label + .tab {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Introduction */
+
+#tabs label[for="introductiontab"] {
+    background: #4CADF3;
+}
+
+#tabs input[type="radio"]:checked + label[for="introductiontab"] {
+    background: #428CC2;
+}
+
+/* Tasks */
 
 .task-wrapper {
     display: flex;
@@ -116,14 +130,16 @@ h3 {
     gap: 20px;
 }
 
-#greeting, #howto {
+#greeting,
+#howto {
     background: #4CADF3;
     color: #FFFFFF;
     padding: 16px;
     border-radius: 16px;
 }
 
-#greeting p, #howto p {
+#greeting p,
+#howto p {
     font-size: 24px;
 }
 
@@ -221,7 +237,8 @@ h3 {
     display: block;
 }
 
-.htmlcode, .csscode {
+.htmlcode,
+.csscode {
     background: #DADADA;
     width: 100%;
     max-width: 400px;
@@ -357,7 +374,8 @@ h3 {
 
     /* Greeting Container */
 
-    #greeting p, #howto p {
+    #greeting p,
+    #howto p {
         font-size: 22px
     }
 
