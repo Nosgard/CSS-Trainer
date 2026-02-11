@@ -3,7 +3,8 @@ import { buildCSS } from "./cssBuilder.js";
 import { renderAllStyles } from "./styleManager.js";
 import { loadTasks } from "./taskLoader.js";
 import { validateTask } from "./taskValidator.js";
-import { getActiveTab, getActiveTask, updateResetButton, updateCheckButton, updateCheckButtonState, lockInputs, recoverInputs, styleEditor, styleTab, removeStyleByAnswer } from "./tabHandler.js";
+import { getActiveTab, getActiveTask, updateResetButton, updateCheckButton, updateCheckButtonState,
+    lockInputs, recoverInputs, styleEditor, styleTab, removeStyleByAnswer } from "./tabHandler.js";
 
 /** This is the Main Part of the Application, where all the Action takes place.
  * First the File takes all important methods from the other JS-Files,
@@ -38,7 +39,7 @@ const btnReset = document.querySelector(".btn.reset");
 const btnCheck = document.querySelector(".btn.check");
 const tabs = document.querySelectorAll('#tabs input[name="tabs"]');
 const taskTabs = document.querySelectorAll(".tab[data-task-id]");
-const taskLabels = document.querySelectorAll('#tabs input[type="radio"] + label');
+const tabLabels = document.querySelectorAll('#tabs input[type="radio"] + label');
 let taskData = [];
 const taskStyles = new Map();
 
@@ -87,8 +88,10 @@ btnCheck.addEventListener("click", () => {
         if (isAnswerCorrect) {
             console.log("Correct");
 
+            // The new CSS-Rule consists of a given Selector in the JSON-File. The rest comes from the Input
             const cssRule = buildCSS(activeTask.target, input.property, input.value);
 
+            // Add the CSS-Rule to a Map so that it can be applied when the user goes back to the answered Task
             taskStyles.set(activeTask.id, cssRule);
             renderAllStyles(taskStyles);
 
@@ -140,7 +143,7 @@ btnReset.addEventListener("click", () => {
     });
 
     // Remove the Style of every Tab-Label
-    taskLabels.forEach(label => {
+    tabLabels.forEach(label => {
         removeStyleByAnswer(label);
     })
 

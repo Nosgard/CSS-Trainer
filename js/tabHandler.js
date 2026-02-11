@@ -21,7 +21,7 @@ export function getActiveTask(activeTab, taskData) {
     return task;
 }
 
-/**True: Tab is no Task
+/** True: Tab is no Task
  * False: Tab is a Task */
 function isTabTask() {
     const activeTab = getActiveTab();
@@ -50,7 +50,7 @@ export function updateCheckButton(btnCheck) {
         : "none";
 }
 
-/**The Check-Button is only allowed to be used as long as the 
+/** The Check-Button is only allowed to be used as long as the 
  * active Task remains unsolved. Once it's the case, disable
  * the Check-Button */
 export function updateCheckButtonState(btnCheck, activeTask) {
@@ -86,7 +86,7 @@ export function recoverInputs(activeTab) {
     });
 }
 
-//Gives the Editor a Style depending on the given answer
+// Gives the Editor a Style depending on the given answer
 export function styleEditor(activeTab, isAnswerCorrect) {
     const editor = activeTab.querySelector('.csscode');
 
@@ -105,18 +105,18 @@ export function styleTab(tabLabel, isAnswerCorrect) {
  * Information, go to styles.css and look for the Sections
  * that are marked with "JavaScript based" */
 
-function setStyleByAnswer(styleObject, isAnswerCorrect) {
+function setStyleByAnswer(styleElement, isAnswerCorrect) {
     if (isAnswerCorrect) {
 
-        if (styleObject.classList.contains("wrong")) {
-            styleObject.classList.remove("wrong");
+        if (styleElement.classList.contains("wrong")) {
+            styleElement.classList.remove("wrong");
         }
 
-        styleObject.classList.add("solved");
+        styleElement.classList.add("solved");
     }
     else {
-        if (!styleObject.classList.contains("wrong")) {
-            styleObject.classList.add("wrong");
+        if (!styleElement.classList.contains("wrong")) {
+            styleElement.classList.add("wrong");
         }
     }
 }
