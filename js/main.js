@@ -109,7 +109,7 @@ btnCheck.addEventListener("click", () => {
         styleEditor(activeTab, isAnswerCorrect);
         styleTab(tabLabel, isAnswerCorrect);
     }
-})
+});
 
 btnReset.addEventListener("click", () => {
     const activeTab = getActiveTab();
