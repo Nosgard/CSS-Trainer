@@ -5,8 +5,7 @@ export function getActiveTab() {
 // The active Task will be derived from the ID of the active Tab
 export function getActiveTask(activeTab, taskData) {
 
-    if (!activeTab)
-    {
+    if (!activeTab) {
         return null;
     }
 
@@ -24,24 +23,38 @@ export function getActiveTask(activeTab, taskData) {
 
 /**True: Tab is no Task
  * False: Tab is a Task */
-function isCheckButtonActive() {
+function isTabTask() {
     const activeTab = getActiveTab();
     return activeTab?.dataset.taskId;
 }
 
+/** Depending on the active Tab and any attempted Task
+ * (have given one Answer no matter if right or wrong)
+ * either show or hide the Reset-Button
+ */
+export function updateResetButton(btnReset, taskData) {
+    const anyTaskAttempted = taskData.some(task => task.attempted === true);
+
+    if (isTabTask() && anyTaskAttempted) {
+        btnReset.style.display = "inline-block";
+    }
+    else {
+        btnReset.style.display = "none";
+    }
+}
+
 // Depending on the active Tab either show or hide the Check-Button
 export function updateCheckButton(btnCheck) {
-    btnCheck.style.display = isCheckButtonActive()
-    ? "inline-block"
-    : "none";
+    btnCheck.style.display = isTabTask()
+        ? "inline-block"
+        : "none";
 }
 
 /**The Check-Button is only allowed to be used as long as the 
  * active Task remains unsolved. Once it's the case, disable
  * the Check-Button */
 export function updateCheckButtonState(btnCheck, activeTask) {
-    if (activeTask)
-    {
+    if (activeTask) {
         btnCheck.disabled = activeTask.solved;
     }
 }
@@ -65,8 +78,7 @@ export function recoverInputs(activeTab) {
     const activeInputs = activeTab.querySelectorAll("input");
 
     activeInputs.forEach(input => {
-        if(input.disabled)
-        {
+        if (input.disabled) {
             input.disabled = false;
         }
 
@@ -96,17 +108,14 @@ export function styleTab(tabLabel, isAnswerCorrect) {
 function setStyleByAnswer(styleObject, isAnswerCorrect) {
     if (isAnswerCorrect) {
 
-        if(styleObject.classList.contains("wrong"))
-        {
+        if (styleObject.classList.contains("wrong")) {
             styleObject.classList.remove("wrong");
         }
 
-       styleObject.classList.add("solved");
+        styleObject.classList.add("solved");
     }
-    else
-    {
-        if(!styleObject.classList.contains("wrong"))
-        {
+    else {
+        if (!styleObject.classList.contains("wrong")) {
             styleObject.classList.add("wrong");
         }
     }

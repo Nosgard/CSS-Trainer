@@ -3,7 +3,7 @@ import { buildCSS } from "./cssBuilder.js";
 import { renderAllStyles } from "./styleManager.js";
 import { loadTasks } from "./taskLoader.js";
 import { validateTask } from "./taskValidator.js";
-import { getActiveTab, getActiveTask, updateCheckButton, updateCheckButtonState, lockInputs, recoverInputs, styleEditor, styleTab, removeStyleByAnswer } from "./tabHandler.js";
+import { getActiveTab, getActiveTask, updateResetButton, updateCheckButton, updateCheckButtonState, lockInputs, recoverInputs, styleEditor, styleTab, removeStyleByAnswer } from "./tabHandler.js";
 
 /** This is the Main Part of the Application, where all the Action takes place.
  * First the File takes all important methods from the other JS-Files,
@@ -33,9 +33,12 @@ import { getActiveTab, getActiveTask, updateCheckButton, updateCheckButtonState,
  * The Check-Button is the key to the whole processing
  * of the Task Validation. Handle with care!
  */
+const style = document.getElementById("task-style");
 const btnReset = document.querySelector(".btn.reset");
 const btnCheck = document.querySelector(".btn.check");
 const tabs = document.querySelectorAll('#tabs input[name="tabs"]');
+const taskTabs = document.querySelectorAll(".tab[data-task-id]");
+const taskLabels = document.querySelectorAll('#tabs input[type="radio"] + label');
 let taskData = [];
 const taskStyles = new Map();
 
@@ -47,6 +50,7 @@ const taskStyles = new Map();
 
 // Don't let the Check-Button appear on Tabs not related to Tasks
 window.addEventListener("DOMContentLoaded", () => {
+    updateResetButton(btnReset, taskData);
     updateCheckButton(btnCheck);
 });
 
@@ -59,6 +63,7 @@ tabs.forEach(tab => {
         const activeTab = getActiveTab();
         const activeTask = getActiveTask(activeTab, taskData);
 
+        updateResetButton(btnReset, taskData);
         updateCheckButton(btnCheck);
         updateCheckButtonState(btnCheck, activeTask);
     });
@@ -81,7 +86,7 @@ btnCheck.addEventListener("click", () => {
 
         if (isAnswerCorrect) {
             console.log("Correct");
-                
+
             const cssRule = buildCSS(activeTask.target, input.property, input.value);
 
             taskStyles.set(activeTask.id, cssRule);
@@ -92,8 +97,14 @@ btnCheck.addEventListener("click", () => {
             updateCheckButtonState(btnCheck, activeTask);
 
             lockInputs(activeTab);
-            
+
         }
+
+        if (!activeTask.attempted) {
+            activeTask.attempted = true;
+        }
+
+        updateResetButton(btnReset, taskData);
 
         styleEditor(activeTab, isAnswerCorrect);
         styleTab(tabLabel, isAnswerCorrect);
@@ -101,23 +112,26 @@ btnCheck.addEventListener("click", () => {
 })
 
 btnReset.addEventListener("click", () => {
-    const style = document.getElementById("task-style");
-    const taskTabs = document.querySelectorAll(".tab[data-task-id]");
-    const taskLabels = document.querySelectorAll('#tabs input[type="radio"] + label');
     const activeTab = getActiveTab();
     const activeTask = getActiveTask(activeTab, taskData);
 
+    // Clear the hole Style and the Map with all saved Styles
     style.innerHTML = "";
 
     taskStyles.clear();
 
+    // Reset the JSON-Elements "attempted" and "solved" if necessary
     taskData.forEach(task => {
-        if (task.solved)
-        {
+        if (task.attempted) {
+            task.attempted = false;
+        }
+
+        if (task.solved) {
             task.solved = false;
         }
-    })
+    });
 
+    // Remove the Style of every CSS-Editor
     taskTabs.forEach(tab => {
         recoverInputs(tab);
 
@@ -125,10 +139,12 @@ btnReset.addEventListener("click", () => {
         removeStyleByAnswer(editor);
     });
 
+    // Remove the Style of every Tab-Label
     taskLabels.forEach(label => {
         removeStyleByAnswer(label);
     })
 
+    updateResetButton (btnReset, taskData);
     updateCheckButton(btnCheck);
     updateCheckButtonState(btnCheck, activeTask);
 });

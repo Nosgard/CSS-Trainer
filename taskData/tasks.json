@@ -3,6 +3,7 @@
         {
             "id": 1,
             "exercise": "Element Tag",
+            "attempted": false,
             "solved": false,
             "target": "#task-1 .elementsdisplay p",
             "expected": {
@@ -16,6 +17,7 @@
         {
             "id": 2,
             "exercise": "ID",
+            "attempted": false,
             "solved": false,
             "target": "#task-2 #elementid",
             "expected": {
@@ -29,6 +31,7 @@
         {
             "id": 3,
             "exercise": "Classes",
+            "attempted": false,
             "solved": false,
             "target": "#task-3 .elementcl",
             "expected": {
@@ -42,6 +45,7 @@
         {
             "id": 4,
             "exercise": "Children1",
+            "attempted": false,
             "solved": false,
             "target": "#task-4 .wrapper p:first-child",
             "expected": {
@@ -55,6 +59,7 @@
         {
             "id": 5,
             "exercise": "Children2",
+            "attempted": false,
             "solved": false,
             "target": "#task-5 .wrapper p:last-child",
             "expected": {
@@ -68,6 +73,7 @@
         {
             "id": 6,
             "exercise": "Children3",
+            "attempted": false,
             "solved": false,
             "target": "#task-6 .wrapper p:nth-child(2)",
             "expected": {
