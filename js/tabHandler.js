@@ -56,6 +56,24 @@ export function lockInputs(activeTab) {
     });
 }
 
+/** When the Input-Fields in an active Tab got locked,
+ * I.e. the user has entered the correct answer, use
+ * this Function to set the Input-Fields in their
+ * original State
+*/
+export function recoverInputs(activeTab) {
+    const activeInputs = activeTab.querySelectorAll("input");
+
+    activeInputs.forEach(input => {
+        if(input.disabled)
+        {
+            input.disabled = false;
+        }
+
+        input.value = "";
+    });
+}
+
 //Gives the Editor a Style depending on the given answer
 export function styleEditor(activeTab, isAnswerCorrect) {
     const editor = activeTab.querySelector('.csscode');
@@ -92,4 +110,9 @@ function setStyleByAnswer(styleObject, isAnswerCorrect) {
             styleObject.classList.add("wrong");
         }
     }
+}
+
+// Removes any given Style related to a given Answer
+export function removeStyleByAnswer(tabLabel) {
+    tabLabel.classList.remove("solved", "wrong");
 }

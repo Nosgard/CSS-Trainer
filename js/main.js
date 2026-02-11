@@ -3,7 +3,7 @@ import { buildCSS } from "./cssBuilder.js";
 import { renderAllStyles } from "./styleManager.js";
 import { loadTasks } from "./taskLoader.js";
 import { validateTask } from "./taskValidator.js";
-import { getActiveTab, getActiveTask, updateCheckButton, updateCheckButtonState, lockInputs, styleEditor, styleTab } from "./tabHandler.js";
+import { getActiveTab, getActiveTask, updateCheckButton, updateCheckButtonState, lockInputs, recoverInputs, styleEditor, styleTab, removeStyleByAnswer } from "./tabHandler.js";
 
 /** This is the Main Part of the Application, where all the Action takes place.
  * First the File takes all important methods from the other JS-Files,
@@ -33,6 +33,7 @@ import { getActiveTab, getActiveTask, updateCheckButton, updateCheckButtonState,
  * The Check-Button is the key to the whole processing
  * of the Task Validation. Handle with care!
  */
+const btnReset = document.querySelector(".btn.reset");
 const btnCheck = document.querySelector(".btn.check");
 const tabs = document.querySelectorAll('#tabs input[name="tabs"]');
 let taskData = [];
@@ -98,3 +99,36 @@ btnCheck.addEventListener("click", () => {
         styleTab(tabLabel, isAnswerCorrect);
     }
 })
+
+btnReset.addEventListener("click", () => {
+    const style = document.getElementById("task-style");
+    const taskTabs = document.querySelectorAll(".tab[data-task-id]");
+    const taskLabels = document.querySelectorAll('#tabs input[type="radio"] + label');
+    const activeTab = getActiveTab();
+    const activeTask = getActiveTask(activeTab, taskData);
+
+    style.innerHTML = "";
+
+    taskStyles.clear();
+
+    taskData.forEach(task => {
+        if (task.solved)
+        {
+            task.solved = false;
+        }
+    })
+
+    taskTabs.forEach(tab => {
+        recoverInputs(tab);
+
+        const editor = tab.querySelector(".csscode");
+        removeStyleByAnswer(editor);
+    });
+
+    taskLabels.forEach(label => {
+        removeStyleByAnswer(label);
+    })
+
+    updateCheckButton(btnCheck);
+    updateCheckButtonState(btnCheck, activeTask);
+});

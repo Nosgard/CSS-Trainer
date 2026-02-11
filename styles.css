@@ -319,6 +319,7 @@ h3 {
     display: flex;
     justify-content: flex-end;
     margin-top: 20px;
+    gap: 20px;
 }
 
 .btn {
