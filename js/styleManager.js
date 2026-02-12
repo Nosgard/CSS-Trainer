@@ -5,9 +5,7 @@
  * via the ID of the current Task.
  */
 
-const style = document.getElementById("task-style");
-
-export function renderAllStyles(taskStyles) {
+export function renderAllStyles(taskStyles, headStyle) {
     let css = "";
     console.log("Begin rendering");
 
@@ -16,5 +14,5 @@ export function renderAllStyles(taskStyles) {
         console.log(css);
     }
 
-    style.textContent = css;
+    headStyle.textContent = css;
 }

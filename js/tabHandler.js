@@ -1,15 +1,19 @@
+export function getActiveTabInput() {
+    return document.querySelector('#tabs input[name="tabs"]:checked');
+}
+
 export function getActiveTab() {
     return document.querySelector('#tabs input[name="tabs"]:checked + label + .tab');
 }
 
-// The active Task will be derived from the ID of the active Tab
-export function getActiveTask(activeTab, taskData) {
+// The active Task will be derived from the ID of the active Tab Input
+export function getActiveTask(activeTabInput, taskData) {
 
-    if (!activeTab) {
+    if (!activeTabInput) {
         return null;
     }
 
-    const taskId = Number(activeTab.dataset.taskId);
+    const taskId = Number(activeTabInput.dataset.taskId);
 
     const task = taskData.find(task => task.id === taskId);
 
@@ -24,8 +28,8 @@ export function getActiveTask(activeTab, taskData) {
 /** True: Tab is no Task
  * False: Tab is a Task */
 function isTabTask() {
-    const activeTab = getActiveTab();
-    return activeTab?.dataset.taskId;
+    const activeTabInput = getActiveTabInput();
+    return activeTabInput?.dataset.taskId;
 }
 
 /** Depending on the active Tab and any attempted Task
@@ -93,8 +97,8 @@ export function styleEditor(activeTab, isAnswerCorrect) {
     setStyleByAnswer(editor, isAnswerCorrect);
 }
 
-// Gives the Tab a Style depending on the given answer
-export function styleTab(tabLabel, isAnswerCorrect) {
+// Gives the Label of a Tab a Style depending on the given answer
+export function styleTabLabel(tabLabel, isAnswerCorrect) {
     setStyleByAnswer(tabLabel, isAnswerCorrect);
 }
 

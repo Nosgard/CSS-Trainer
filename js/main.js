@@ -3,8 +3,9 @@ import { buildCSS } from "./cssBuilder.js";
 import { renderAllStyles } from "./styleManager.js";
 import { loadTasks } from "./taskLoader.js";
 import { validateTask } from "./taskValidator.js";
-import { getActiveTab, getActiveTask, updateResetButton, updateCheckButton, updateCheckButtonState,
-    lockInputs, recoverInputs, styleEditor, styleTab, removeStyleByAnswer } from "./tabHandler.js";
+import { getActiveTabInput, getActiveTab, getActiveTask, updateResetButton,
+    updateCheckButton, updateCheckButtonState, lockInputs, recoverInputs, styleEditor,
+    styleTabLabel, removeStyleByAnswer } from "./tabHandler.js";
 
 /** This is the Main Part of the Application, where all the Action takes place.
  * First the File takes all important methods from the other JS-Files,
@@ -34,19 +35,75 @@ import { getActiveTab, getActiveTask, updateResetButton, updateCheckButton, upda
  * The Check-Button is the key to the whole processing
  * of the Task Validation. Handle with care!
  */
-const style = document.getElementById("task-style");
+const headStyle = document.getElementById("task-style");
 const btnReset = document.querySelector(".btn.reset");
 const btnCheck = document.querySelector(".btn.check");
 const tabs = document.querySelectorAll('#tabs input[name="tabs"]');
-const taskTabs = document.querySelectorAll(".tab[data-task-id]");
-const tabLabels = document.querySelectorAll('#tabs input[type="radio"] + label');
+const tabLabels = document.querySelectorAll('#tabs input[name="tabs"] + label');
+const taskTabs = document.querySelectorAll("#tabs input[data-task-id] + label + .tab");
 let taskData = [];
 const taskStyles = new Map();
+const taskInputs = new Map();
 
 // Allocate all Tasks (For more Info: taskData/tasks.json)
 (async () => {
     const tasks = await loadTasks();
-    taskData = tasks;
+
+    const lsTaskData = localStorage.getItem('taskData');
+    const lsTaskStyles = localStorage.getItem('taskStyles');
+    const lsTaskInputs = localStorage.getItem('taskInputs');
+
+    if (lsTaskData) {
+        taskData = JSON.parse(lsTaskData);
+    }
+    else {
+        taskData = tasks;
+
+        return;
+    }
+
+    if (lsTaskStyles) {
+        const parseStyles = JSON.parse(lsTaskStyles);
+
+        parseStyles.forEach(([key, value]) => {
+            taskStyles.set(Number(key), value);
+        });
+
+        renderAllStyles(taskStyles, headStyle);
+    }
+
+    if (lsTaskInputs) {
+        const parseInputs = JSON.parse(lsTaskInputs);
+
+        parseInputs.forEach(([key, value]) => {
+            taskInputs.set(Number(key), value);
+        });
+    }
+
+    for (const task of taskInputs.values()) {
+        const taskLabel = document.querySelector(`#tabs input[data-task-id="${task.id}"] + label`);
+        const taskTab = document.querySelector(`#tabs input[data-task-id="${task.id}"] + label + .tab`);
+        taskTab.querySelector(".css-selector").value = task.selector;
+        taskTab.querySelector(".css-property").value = task.property;
+        taskTab.querySelector(".css-value").value = task.value;
+
+        if (task.solved) {
+            styleEditor(taskTab, true);
+            styleTabLabel(taskLabel, true);
+            lockInputs(taskTab);
+        }
+        else if (task.attempted) {
+            styleEditor(taskTab, false);
+            styleTabLabel(taskLabel, false);
+        }
+    }
+
+    console.log("An overview of all Task Inputs (Map)")
+    for (const test of taskInputs.values())
+    {
+        console.log("Id: " + test.id);
+        console.log(test);
+    }
 })();
 
 // Don't let the Check-Button appear on Tabs not related to Tasks
@@ -61,8 +118,8 @@ window.addEventListener("DOMContentLoaded", () => {
 */
 tabs.forEach(tab => {
     tab.addEventListener("change", () => {
-        const activeTab = getActiveTab();
-        const activeTask = getActiveTask(activeTab, taskData);
+        const activeTabInput = getActiveTabInput();
+        const activeTask = getActiveTask(activeTabInput, taskData);
 
         updateResetButton(btnReset, taskData);
         updateCheckButton(btnCheck);
@@ -77,8 +134,9 @@ btnCheck.addEventListener("click", () => {
     const tabLabel = document.querySelector('#tabs input[type="radio"]:checked + label');
 
     // Only take the Task of the selected Tab into consideration!
+    const activeTabInput = getActiveTabInput();
     const activeTab = getActiveTab();
-    const activeTask = getActiveTask(activeTab, taskData);
+    const activeTask = getActiveTask(activeTabInput, taskData);
     const input = readEditor(activeTab);
 
     if (input) {
@@ -93,9 +151,11 @@ btnCheck.addEventListener("click", () => {
 
             // Add the CSS-Rule to a Map so that it can be applied when the user goes back to the answered Task
             taskStyles.set(activeTask.id, cssRule);
-            renderAllStyles(taskStyles);
+            renderAllStyles(taskStyles, headStyle);
 
             activeTask.solved = true;
+
+            localStorage.setItem('taskStyles', JSON.stringify([...taskStyles]));
 
             updateCheckButtonState(btnCheck, activeTask);
 
@@ -107,19 +167,34 @@ btnCheck.addEventListener("click", () => {
             activeTask.attempted = true;
         }
 
+        localStorage.setItem('taskData', JSON.stringify(taskData));
+
+        const taskEntries = {
+            id: activeTabInput?.dataset.taskId,
+            solved: activeTask.solved,
+            attempted: activeTask.attempted,
+            selector: input.selector,
+            property: input.property,
+            value: input.value
+        };
+
+        taskInputs.set(Number(activeTabInput?.dataset.taskId), taskEntries);
+
+        localStorage.setItem('taskInputs', JSON.stringify([...taskInputs]));
+
         updateResetButton(btnReset, taskData);
 
         styleEditor(activeTab, isAnswerCorrect);
-        styleTab(tabLabel, isAnswerCorrect);
+        styleTabLabel(tabLabel, isAnswerCorrect);
     }
 });
 
 btnReset.addEventListener("click", () => {
-    const activeTab = getActiveTab();
-    const activeTask = getActiveTask(activeTab, taskData);
+    const activeTabInput = getActiveTabInput();
+    const activeTask = getActiveTask(activeTabInput, taskData);
 
     // Clear the hole Style and the Map with all saved Styles
-    style.innerHTML = "";
+    headStyle.innerHTML = "";
 
     taskStyles.clear();
 
@@ -147,7 +222,9 @@ btnReset.addEventListener("click", () => {
         removeStyleByAnswer(label);
     })
 
-    updateResetButton (btnReset, taskData);
+    updateResetButton(btnReset, taskData);
     updateCheckButton(btnCheck);
     updateCheckButtonState(btnCheck, activeTask);
+
+    localStorage.clear();
 });
