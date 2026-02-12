@@ -101,12 +101,6 @@ const taskInputs = new Map();
             styleTabLabel(taskLabel, false);
         }
     }
-
-    console.log("An overview of all Task Inputs (Map)")
-    for (const test of taskInputs.values()) {
-        console.log("Id: " + test.id);
-        console.log(test);
-    }
 })();
 
 // Don't let the Check-Button appear on Tabs not related to Tasks
