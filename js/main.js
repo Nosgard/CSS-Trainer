@@ -197,6 +197,7 @@ btnReset.addEventListener("click", () => {
     headStyle.innerHTML = "";
 
     taskStyles.clear();
+    taskInputs.clear();
 
     // Reset the JSON-Elements "attempted" and "solved" if necessary
     taskData.forEach(task => {
@@ -226,5 +227,7 @@ btnReset.addEventListener("click", () => {
     updateCheckButton(btnCheck);
     updateCheckButtonState(btnCheck, activeTask);
 
-    localStorage.clear();
+    localStorage.removeItem('taskData');
+    localStorage.removeItem('taskStyles');
+    localStorage.removeItem('taskInputs');
 });
