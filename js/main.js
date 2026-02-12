@@ -3,9 +3,11 @@ import { buildCSS } from "./cssBuilder.js";
 import { renderAllStyles } from "./styleManager.js";
 import { loadTasks } from "./taskLoader.js";
 import { validateTask } from "./taskValidator.js";
-import { getActiveTabInput, getActiveTab, getActiveTask, updateResetButton,
+import {
+    getActiveTabInput, getActiveTab, getActiveTask, updateResetButton,
     updateCheckButton, updateCheckButtonState, lockInputs, recoverInputs, styleEditor,
-    styleTabLabel, removeStyleByAnswer } from "./tabHandler.js";
+    styleTabLabel, removeStyleByAnswer
+} from "./tabHandler.js";
 
 /** This is the Main Part of the Application, where all the Action takes place.
  * First the File takes all important methods from the other JS-Files,
@@ -45,7 +47,9 @@ let taskData = [];
 const taskStyles = new Map();
 const taskInputs = new Map();
 
-// Allocate all Tasks (For more Info: taskData/tasks.json)
+/** Asynchronous Call of:
+ * 1. The Tasks (For more Info: taskData/tasks.json)
+ * 2. All stored Informations from the Local-Storage */
 (async () => {
     const tasks = await loadTasks();
 
@@ -99,8 +103,7 @@ const taskInputs = new Map();
     }
 
     console.log("An overview of all Task Inputs (Map)")
-    for (const test of taskInputs.values())
-    {
+    for (const test of taskInputs.values()) {
         console.log("Id: " + test.id);
         console.log(test);
     }
