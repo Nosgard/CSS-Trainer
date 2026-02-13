@@ -8,6 +8,7 @@ import {
     updateCheckButton, updateCheckButtonState, lockInputs, recoverInputs, styleEditor,
     styleTabLabel, removeStyleByAnswer
 } from "./tabHandler.js";
+import {loadTaskItemStyles} from "./taskItemsLoader.js";
 
 /** This is the Main Part of the Application, where all the Action takes place.
  * First the File takes all important methods from the other JS-Files,
@@ -84,23 +85,7 @@ const taskInputs = new Map();
         });
     }
 
-    for (const task of taskInputs.values()) {
-        const taskLabel = document.querySelector(`#tabs input[data-task-id="${task.id}"] + label`);
-        const taskTab = document.querySelector(`#tabs input[data-task-id="${task.id}"] + label + .tab`);
-        taskTab.querySelector(".css-selector").value = task.selector;
-        taskTab.querySelector(".css-property").value = task.property;
-        taskTab.querySelector(".css-value").value = task.value;
-
-        if (task.solved) {
-            styleEditor(taskTab, true);
-            styleTabLabel(taskLabel, true);
-            lockInputs(taskTab);
-        }
-        else if (task.attempted) {
-            styleEditor(taskTab, false);
-            styleTabLabel(taskLabel, false);
-        }
-    }
+    loadTaskItemStyles(taskInputs);
 })();
 
 // Don't let the Check-Button appear on Tabs not related to Tasks
